@@ -8,7 +8,14 @@ export const useSwitchState = (
     keyof SwitchCommon | keyof SwitchSlots | "as" | "ref"
   >
 ) => {
-  const { defaultChecked, checked, disabled = false, onChange, id } = state;
+  const {
+    defaultChecked = false,
+    checked,
+    disabled = false,
+    onChange,
+    id
+  } = state;
+
   const [internalValue, setInternalValue] = useControllableState({
     defaultState: defaultChecked,
     state: checked,
@@ -17,10 +24,10 @@ export const useSwitchState = (
 
   const onInputChange = React.useCallback(
     (ev: React.ChangeEvent<HTMLInputElement>) => {
-      onChange?.(ev, !internalValue);
-      setInternalValue(!internalValue);
+      onChange?.(ev, { value: ev.target.checked });
+      setInternalValue(ev.target.checked);
     },
-    [internalValue, onChange, setInternalValue]
+    [onChange, setInternalValue]
   );
 
   // Track Props

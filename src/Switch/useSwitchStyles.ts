@@ -7,30 +7,30 @@ import { SwitchState } from "./Switch.types";
  */
 const useRootStyles = makeStyles({
   root: (theme) => ({
-    "--slider-thumb-size": "12px",
+    "--slider-thumb-size": "14px",
     position: "relative",
     display: "inline-block",
     width: "40px",
     height: "20px",
-    // userSelect: "none",
+    userSelect: "none",
     overflow: "hidden",
-    // touchAction: "none",
+    touchAction: "none",
     verticalAlign: "bottom"
   }),
 
   unchecked: (theme) => ({
     ":hover .ms-Switch-thumb": {
-      background: "black"
+      background: "#424242"
     },
 
     ":hover .ms-Switch-track": {
-      borderColor: "black"
+      borderColor: "#424242"
     }
   }),
 
   checked: (theme) => ({
     ":hover .ms-Switch-track": {
-      background: "#005a9e"
+      background: "#004578"
     }
   }),
 
@@ -51,16 +51,18 @@ const useTrackStyles = makeStyles({
     width: "100%",
     height: "100%",
     boxSizing: "border-box",
-    borderRadius: "999px"
+    borderRadius: "999px",
+    transition: "background .2s cubic-bezier(0.33, 0.0, 0.67, 1)"
   }),
 
   unchecked: (theme) => ({
+    background: "white",
     border: `1px solid #605e5c`
   }),
 
   checked: (theme) => ({
-    border: "0px",
-    background: "#0078d4"
+    background: "#0078d4",
+    border: "0px"
   }),
 
   disabledUnchecked: (theme) => ({
@@ -83,7 +85,7 @@ const useThumbWrapperStyles = makeStyles({
     right: "calc(var(--slider-thumb-size) * .7)",
     height: "100%",
     transition:
-      "transform .3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity .3s cubic-bezier(0.1, 0.9, 0.2, 1) .05s"
+      "transform .2s cubic-bezier(0.33, 0.0, 0.67, 1), background .2s cubic-bezier(0.33, 0.0, 0.67, 1)"
   }),
 
   unchecked: (theme) => ({

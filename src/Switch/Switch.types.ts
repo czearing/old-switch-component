@@ -53,7 +53,12 @@ export interface SwitchCommon
   /**
    * Callback to be called when the checked state value changes.
    */
-  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: boolean) => void;
+  onChange?: (
+    ev: React.ChangeEvent<HTMLInputElement>,
+    data: {
+      value: boolean;
+    }
+  ) => void;
 }
 
 /**
